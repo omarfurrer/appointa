@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('landing');
 });
 
-Route::get('/mediation', [CategoriesController::class, 'getMediation']);
+Route::get('/{category:slug}', [CategoryController::class, 'show']);
 
 Route::get('/dashboard', function () {
     return view('dashboard');

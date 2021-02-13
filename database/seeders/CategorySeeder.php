@@ -18,6 +18,7 @@ class CategorySeeder extends Seeder
         DB::table('categories')->insert(
             [
                 'name' => 'Mediation',
+                'slug' => 'mediation',
                 'meta_title' => 'Mediation',
                 'meta_description' => 'Mediation',
                 'meta_keywords' => 'Mediation',
@@ -26,6 +27,7 @@ class CategorySeeder extends Seeder
             ],
             [
                 'name' => 'Accounting',
+                'slug' => 'accounting',
                 'meta_title' => 'Accounting',
                 'meta_description' => 'Accounting',
                 'meta_keywords' => 'Accounting',

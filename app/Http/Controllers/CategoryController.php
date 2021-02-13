@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Artesaos\SEOTools\Facades\SEOTools;
+use Artesaos\SEOTools\Facades\SEOMeta;
 
 class CategoryController extends Controller
 {
@@ -13,8 +15,12 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function showMediation()
+    public function show(Category $category)
     {
-        return view('categories.show');
+        SEOTools::setTitle($category->meta_title);
+        SEOTools::setDescription($category->meta_description);
+        SEOMeta::setKeywords($category->meta_keywords);
+
+        return view('categories.show', compact('category'));
     }
 }
