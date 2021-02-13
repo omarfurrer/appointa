@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,14 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('landing');
+Route::group(['middleware' => ['auth','role:super-admin|admin']], function () {
+    Route::redirect('/', '/admin/dashboard');
+    Route::view('/dashboard', 'admin.dashboard');
+    Route::get('/categories', [CategoryController::class, 'index']);
 });
 
-require __DIR__ . '/auth.php';
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
-Route::get('/{category:slug}', [CategoryController::class, 'show']);
+// Route::middleware(['web'])->group(function () {
+//     //
+// });

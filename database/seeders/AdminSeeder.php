@@ -17,12 +17,12 @@ class AdminSeeder extends Seeder
         User::create([
             'name' => 'Omar',
             'email' => 'omar.furrer@gmail.com',
-            'password' => '12345678'
+            'password' => bcrypt('12345678')
         ])->assignRole('super-admin');
         User::create([
             'name' => 'Vincent',
             'email' => 'vincentmaar@gmail.com',
-            'password' => '12345678'
+            'password' => bcrypt('12345678')
         ])->assignRole('super-admin');
     }
 }
